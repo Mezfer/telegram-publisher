@@ -39,7 +39,7 @@ def ai_post():
         "ولا تكتب جملة ختامية عن المتابعة. أعد نص المنشور فقط."
         "مهم: اجعل المنشور جملتين أو ثلاثًا فقط (حوالي 40 كلمة) مع خطوة عملية واحدة يطبقها القارئ اليوم، دون شرح عام عن الأداة، ولا تكرر الأدوات المشهورة جدًا."
     )
-    for model in ["gemini-3.6-flash", "gemini-2.5-flash"]:
+    for model in ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite"]:
         try:
             r = requests.post(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
