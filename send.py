@@ -46,7 +46,9 @@ def ai_post():
                 json={"contents": [{"parts": [{"text": prompt}]}]},
                 timeout=60,
             )
-            r.raise_for_status()
+            if r.status_code != 200:
+                print("Gemini HTTP", model, r.status_code, r.text[:300])
+                continue
             parts = r.json()["candidates"][0]["content"]["parts"]
             text = "".join(p.get("text", "") for p in parts).strip()
             text = text.replace("*", "").replace("#", "")
